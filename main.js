@@ -2,9 +2,16 @@ console.log("hello world")
 
 
 const key = "6b90e7ed6704a9984fc25f85e2580025"
-const query = "Chicago"
+const query = "chicago"
 
-const api = `http://api.openweathermap.org/data/2.5/weather?q=${query}&units=imperial&forecast?id=524901&appid=${key}`
+
+
+const url = new URL("http://api.openweathermap.org/data/2.5/weather?")
+url.searchParams.set('q',query)
+url.searchParams.set('units','imperial')
+url.searchParams.set('id', '524901')
+url.searchParams.set('appid',key)
+
 
 const cityNameHTML = document.getElementById("cityName")
 const humidityHTML = document.getElementById("humidity")
@@ -14,7 +21,7 @@ const tempMaxHTML = document.getElementById("temp-max")
 const feelsLikeHTML = document.getElementById("feels-like")
 
 async function callWeather(){
-    const res = await fetch(api)
+    const res = await fetch(url)
     const data = await res.json()
     console.log(data.main)
 
