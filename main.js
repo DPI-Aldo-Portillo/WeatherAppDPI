@@ -6,11 +6,28 @@ const query = "Chicago"
 
 const api = `http://api.openweathermap.org/data/2.5/weather?q=${query}&units=imperial&forecast?id=524901&appid=${key}`
 
+const cityNameHTML = document.getElementById("cityName")
+const humidityHTML = document.getElementById("humidity")
+const tempHTML = document.getElementById("temp")
+const tempMinHTML = document.getElementById("temp-min")
+const tempMaxHTML = document.getElementById("temp-max")
+const feelsLikeHTML = document.getElementById("feels-like")
+
 async function callWeather(){
     const res = await fetch(api)
     const data = await res.json()
-    console.log(data)
+    console.log(data.main)
+
+    const {temp, feels_like, temp_min, temp_max, pressure, humidity} = data.main
+    tempHTML.textContent = temp
+    feelsLikeHTML.textContent = feels_like
+    tempMinHTML.textContent = temp_min
+    tempMaxHTML.textContent = temp_max
+    humidityHTML.textContent = humidity
+    
     return data
 }
+
+
 
 console.log(callWeather())
