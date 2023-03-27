@@ -1,4 +1,33 @@
 body{
     background-color: rgb(113, 113, 113);
     color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 100vh;
+    width: 100vw;
+}
+
+.space-between{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 90vw;
+}
+
+.quote{
+    text-align: center;
+    width: 80vw;
+}
+
+.space-around{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 90vw;
+}
+
+.text-subtext{
+    text-align: center;
 }
