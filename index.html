@@ -9,20 +9,52 @@
     <link rel="stylesheet" type="text/css" href="styles.css" />
 </head>
 <body>
-    <h1>Weather App</h1>
-    <h2 id="city-name"></h2>
-    <h2 id="temp"></h2>
-    <h2 id="temp-min"></h2>
-    <h2 id="temp-max"></h2>
-    <h2 id="feels-like"></h2>
-    <h2 id="humidity"></h2>
-
-
+    <div>
+        <div>
+            <div>[]</div>
+            <p>6 ATM</p>
+        </div>
+        <div>
+            <div>[]</div>
+            <p>6.6</p>
+        </div>
+    </div>
+    <div>
+        <p>“Don’t say you don’t have enough time. You have exactly the same number of hours per day that were given to Helen Keller, Pasteur, Michelangelo, Mother Teresa, Leonardo da Vinci, Thomas Jefferson, and Albert Einstein.” ―H. Jackson Brown Jr.</p>
+    </div>
+    <div>
+        <div class="text-subtext">
+            <p id="temp-min"></p>
+            <p>min</p>
+        </div>
+        <div class="text-subtext large">
+            <p id="temp"></p>
+            <p id="city-name"></p>
+        </div>
+        <div class="text-subtext">
+            <p id="temp-max"></p>
+            <p>max</p>
+        </div>
+    </div>
+    <div>
+        <div class="text-subtext">
+            <p id="feels-like"></p>
+            <p>Feels Like</p>
+        </div>
+        <div class="text-subtext">
+            <p id="sky">Cloudy</p>
+            <p>Sky</p>
+        </div>
+        <div class="text-subtext">
+            <p id="humidity"></p>
+            <p>Humidity</p>
+        </div>
+    </div>
     <form id="city-form">
         <!-- make sure that placeholder is set to current location later on -->
         <input type="text" name="city" id="city" />
         <button type="submit">Submit</button>
     </form>
-
+    <div class="footer">Aldo Portillo for DPI</div>
 </body>
 </html>
