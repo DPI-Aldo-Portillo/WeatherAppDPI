@@ -4,6 +4,17 @@ const key = "6b90e7ed6704a9984fc25f85e2580025"
 
 const url = new URL("http://api.openweathermap.org/data/2.5/weather?")
 
+navigator.geolocation.getCurrentPosition(position=> {
+    const {
+        latitude,
+        longitude
+    } = position.coords;
+    
+    getLocation(latitude, longitude)
+}, ()=> {
+    console.log("error")
+})
+
 const cityNameHTML = document.getElementById("city-name")
 const humidityHTML = document.getElementById("humidity")
 const tempHTML = document.getElementById("temp")
@@ -12,6 +23,21 @@ const tempMaxHTML = document.getElementById("temp-max")
 const feelsLikeHTML = document.getElementById("feels-like")
 
 const form = document.getElementById("city-form")
+
+async function getLocation(lat, lon){
+    const revQuery = new URL(`http://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&appid=${key}`)
+
+    const res = await fetch(revQuery);
+    const data = await res.json();
+    await callWeather(data[0].name)
+}
+
+form.addEventListener("submit", e => {
+    e.preventDefault()
+    const query = e.target[0].value
+    callWeather(query)
+})
+
 
 async function callWeather(query){
 
@@ -37,9 +63,4 @@ async function callWeather(query){
     return data
 }
 
-form.addEventListener("submit", e => {
-    e.preventDefault()
-    const query = e.target[0].value
-    callWeather(query)
-})
 
