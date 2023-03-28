@@ -9,6 +9,14 @@ body{
     width: 100vw;
 }
 
+.arrow {
+    display: inline-block;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    padding: 3px;
+    transform: rotate(-135deg);
+}
+
 .space-between{
     display: flex;
     align-items: center;
