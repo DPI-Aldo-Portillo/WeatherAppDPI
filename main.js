@@ -4,6 +4,7 @@ const tempHTML = document.getElementById("temp")
 const tempMinHTML = document.getElementById("temp-min")
 const tempMaxHTML = document.getElementById("temp-max")
 const feelsLikeHTML = document.getElementById("feels-like")
+const arrowHTML = document.getElementById("arrow")
 const form = document.getElementById("city-form")
 const key = "6b90e7ed6704a9984fc25f85e2580025"
 const url = new URL("http://api.openweathermap.org/data/2.5/weather?")
@@ -31,6 +32,7 @@ async function callWeather(query){
     console.log(data.main)
 
     const {temp, feels_like, temp_min, temp_max, pressure, humidity} = data.main
+    const {speed, deg} = data.wind
 
     cityNameHTML.textContent = data.name
     tempHTML.textContent = temp
@@ -38,7 +40,7 @@ async function callWeather(query){
     tempMinHTML.textContent = temp_min
     tempMaxHTML.textContent = temp_max
     humidityHTML.textContent = humidity
-    
+    arrowHTML.style.transform = `rotate(${-135 + deg}deg)`
     console.log(data)
     return data
 }
