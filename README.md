@@ -6,6 +6,8 @@
 
 | Integrated | Developing |
 | :-- | --:|
-| Get Weather using current location| Have a dynamic arrow to show windspeed |
-| Allow search for every city | Use a dynamic background based off weather |
-| Get basic weather measurements limited by the API | Calling an inspirational quote API |
+| Get Weather using current location| Use a dynamic background based off city |
+| Allow search for every city |  |
+| Get basic weather measurements limited by the API ||
+| Have a dynamic arrow to show windspeed | |
+| Calling an inspirational quote API | |
