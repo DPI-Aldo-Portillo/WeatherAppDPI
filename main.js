@@ -32,18 +32,20 @@ async function callWeather(query){
     url.searchParams.set('id', '524901')
     url.searchParams.set('appid',key)
 
-    const [weatherRes, quoteRes] = await Promise.all([
+    const [weatherRes, quoteRes, imageRes] = await Promise.all([
         fetch(url),
-        fetch("https://type.fit/api/quotes")
+        fetch("https://type.fit/api/quotes"),
+        fetch(`https://api.unsplash.com/search/photos?client_id=x3X7RhYmQEzSsCUL_t0jftJPWErTfwvECihlwnyvE2g&query=${query}&orientation=landscape`)
     ])
 
     
     const quoteData = await quoteRes.json()
     const weatherData = await weatherRes.json()
+    const imageData = await imageRes.json()
 
-    //console.log(quoteData)
     //console.log(weatherData)
-
+    //console.log(quoteData)
+    console.log(imageData.results[Math.floor(Math.random() * imageData.results.length)].urls.regular)
     //Modify Weather
     const {temp, feels_like, temp_min, temp_max, pressure, humidity} = weatherData.main
 
@@ -67,7 +69,9 @@ async function callWeather(query){
     quote.textContent = quoteData[index].text
     author.textContent = quoteData[index].author
 
-    document.body.style.backgroundImage = "url('https://ak-d.tripcdn.com/images/0105y120008ww16et4BAD.jpg')";
+    const randomImage = imageData.results[Math.floor(Math.random() * imageData.results.length)].urls.regular
+
+    document.body.style.backgroundImage = `url(${randomImage})`;
 
     return [weatherData, quoteData]
 }
@@ -86,3 +90,5 @@ form.addEventListener("submit", e => {
     const query = e.target[0].value
     callWeather(query)
 })
+
+callWeather("New York")
