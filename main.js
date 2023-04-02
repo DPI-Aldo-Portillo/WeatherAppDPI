@@ -67,6 +67,8 @@ async function callWeather(query){
     quote.textContent = quoteData[index].text
     author.textContent = quoteData[index].author
 
+    document.body.style.backgroundImage = "url('https://ak-d.tripcdn.com/images/0105y120008ww16et4BAD.jpg')";
+
     return [weatherData, quoteData]
 }
 
