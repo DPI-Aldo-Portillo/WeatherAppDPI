@@ -22,6 +22,7 @@ navigator.geolocation.getCurrentPosition(position=> {
     console.log("error")
 })
 
+
 async function callWeather(query){
 
     url.searchParams.set('q',query)
@@ -51,6 +52,27 @@ async function callWeather(query){
     return data
 }
 
+
+async function betterGet(query){
+    url.searchParams.set('q',query)
+    url.searchParams.set('units','imperial')
+    url.searchParams.set('id', '524901')
+    url.searchParams.set('appid',key)
+
+    const [weatherRes, quoteRes] = await Promise.all([
+        fetch(url),
+        fetch("https://type.fit/api/quotes")
+    ])
+
+    
+    const quoteData = await quoteRes.json()
+    const weatherData = await weatherRes.json()
+
+    console.log(quoteData)
+    console.log(weatherData)
+    return [weatherData, quoteData]
+}
+
 async function getLocation(lat, lon){
     const revQuery = new URL(`http://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&appid=${key}`)
 
@@ -66,3 +88,4 @@ form.addEventListener("submit", e => {
     callWeather(query)
 })
 
+betterGet("chicago")
