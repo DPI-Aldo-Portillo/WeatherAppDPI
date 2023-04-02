@@ -13,4 +13,4 @@
 | Calling an inspirational quote API | |
 | Use a dynamic background based off city | |
 
-[Active Site](https://aldoportillo.github.io/WeatherAppDPI/)
+[Active Site](https://weather-app-dpi.vercel.app/)
