@@ -45,17 +45,18 @@ async function callWeather(query){
 
     //console.log(weatherData)
     //console.log(quoteData)
-    console.log(imageData.results[Math.floor(Math.random() * imageData.results.length)].urls.regular)
+    //console.log(imageData.results[Math.floor(Math.random() * imageData.results.length)].urls.regular)
+
     //Modify Weather
     const {temp, feels_like, temp_min, temp_max, pressure, humidity} = weatherData.main
 
-    cityNameHTML.textContent = weatherData.name
-    tempHTML.textContent = temp
-    feelsLikeHTML.textContent = feels_like
-    tempMinHTML.textContent = temp_min
-    tempMaxHTML.textContent = temp_max
-    humidityHTML.textContent = humidity
-    pressureHTML.textContent = pressure
+    cityNameHTML.textContent = weatherData.name 
+    tempHTML.textContent = `${temp}°`
+    feelsLikeHTML.textContent = `${feels_like}°`
+    tempMinHTML.textContent =  `${temp_min}°`
+    tempMaxHTML.textContent = `${temp_max}°`
+    humidityHTML.textContent = `${humidity}%`
+    pressureHTML.textContent = `${pressure}Pa`
 
     const {speed, deg} = weatherData.wind
 
@@ -90,5 +91,3 @@ form.addEventListener("submit", e => {
     const query = e.target[0].value
     callWeather(query)
 })
-
-callWeather("New York")
