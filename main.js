@@ -61,7 +61,7 @@ async function callWeather(query){
     const {speed, deg} = weatherData.wind
 
     arrowHTML.style.transform = `rotate(${-135 + deg}deg)`
-    windSpeedHTML.textContent = speed;
+    windSpeedHTML.textContent = `${speed}MPH`;
 
     //Modify Quote
 
